@@ -1,14 +1,32 @@
 #Перше завдання
 
- 
-lines="""60b90c1c13067a15887e1ae1,Tayson,3
-60b90c2413067a15887e1ae2,Vika,1
-60b90c2e13067a15887e1ae3,Barsik,2
-60b90c3b13067a15887e1ae4,Simon,12
-60b90c4613067a15887e1ae5,Tessi,5"""
-outlist= []
-for line in lines.split("\n"):
-    line = line.split(",")
-    outlist.append({"id":line[0],"name":line[1],"age":line[2]})
-print(outlist)
+def total_salary(path):
+    try:
+        with open(path, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
 
+        total_salary = 0
+
+        for line in lines:
+            name, salary_str = line.strip().split(',')
+            salary = int(salary_str)
+            total_salary += salary
+
+        if len(lines) > 0:
+            average_salary = total_salary / len(lines)
+        else:
+            average_salary = 0
+
+        return total_salary, average_salary
+
+    except FileNotFoundError:
+        print(f"File '{path}' not found.")
+        return None, None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None, None
+
+# Приклад використання функції:
+total, average = total_salary("path/to/salary_file.txt")
+if total is not None and average is not None:
+    print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
