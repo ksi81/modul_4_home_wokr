@@ -1,4 +1,6 @@
 #Третє завдання
+#для зміни поточної директорії: cd /Users/sleeper/Documents/GoIt-Python/HomeWork_4/modul_4_home_wokr
+# Зауск вірутального отченні: python3 -m venv venv
 
 import os
 import sys
